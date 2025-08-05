@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising Intern Portal - Leaderboard</title>
+    <link rel="stylesheet" href="css/leaderboard.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h2>InternFund</h2>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <span id="dashboard-link"></span>
+                <a href="leaderboard.html" class="active">Leaderboard</a>
+                <span id="auth-links">
+                    <a href="auth.html">Login</a>
+                </span>
+                <button id="logout-btn" class="btn btn-outline" style="display: none;">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="leaderboard">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="leaderboard-header">
+                <h1>🏆 Fundraising Leaderboard</h1>
+                <p>See how our top performing interns are making a difference</p>
+                
+                <!-- Filter Options -->
+                <div class="filters">
+                    <button class="filter-btn active" data-period="all">All Time</button>
+                    <button class="filter-btn" data-period="month">This Month</button>
+                    <button class="filter-btn" data-period="week">This Week</button>
+                </div>
+            </section>
+
+            <!-- Top 3 Podium -->
+            <section class="podium-section">
+                <div class="podium">
+                    <!-- 2nd Place -->
+                    <div class="podium-place second">
+                        <div class="podium-trophy">🥈</div>
+                        <div class="podium-info">
+                            <h3 id="second-name">Sarah Johnson</h3>
+                            <p id="second-amount">$4,250</p>
+                            <span class="podium-rank">#2</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 1st Place -->
+                    <div class="podium-place first">
+                        <div class="podium-trophy">🥇</div>
+                        <div class="podium-info">
+                            <h3 id="first-name">Alex Chen</h3>
+                            <p id="first-amount">$5,890</p>
+                            <span class="podium-rank">#1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 3rd Place -->
+                    <div class="podium-place third">
+                        <div class="podium-trophy">🥉</div>
+                        <div class="podium-info">
+                            <h3 id="third-name">Mike Rodriguez</h3>
+                            <p id="third-amount">$3,675</p>
+                            <span class="podium-rank">#3</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Full Leaderboard Table -->
+            <section class="leaderboard-table-section">
+                <div class="table-container">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Intern</th>
+                                <th>Amount Raised</th>
+                                <th>Goal Progress</th>
+                                <th>Badge</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <!-- Dynamic content will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Your Position (if logged in) -->
+            <section class="your-position" id="your-position" style="display: none;">
+                <div class="position-card">
+                    <h3>Your Position</h3>
+                    <div class="position-info">
+                        <div class="position-rank">
+                            <span class="rank-number" id="your-rank">#15</span>
+                            <span class="rank-label">Current Rank</span>
+                        </div>
+                        <div class="position-stats">
+                            <div class="stat">
+                                <span id="your-amount">$1,250</span>
+                                <small>Raised</small>
+                            </div>
+                            <div class="stat">
+                                <span id="your-progress">25%</span>
+                                <small>Goal Progress</small>
+                            </div>
+                            <div class="stat">
+                                <span id="gap-to-next">$125</span>
+                                <small>To Next Rank</small>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="dashboard.html" class="btn btn-primary">View Dashboard</a>
+                </div>
+            </section>
+
+            <!-- Statistics -->
+            <section class="leaderboard-stats">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3 id="total-interns">45</h3>
+                        <p>Active Interns</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="total-raised-all">$75,420</h3>
+                        <p>Total Raised</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="average-raised">$1,676</h3>
+                        <p>Average per Intern</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="top-goal-completion">118%</h3>
+                        <p>Highest Goal %</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 InternFund. Inspiring the next generation of fundraisers.</p>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>

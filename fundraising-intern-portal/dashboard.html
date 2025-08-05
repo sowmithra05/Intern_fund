@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising Intern Portal - Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h2>InternFund</h2>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <button id="logout-btn" class="btn btn-outline">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1>Welcome back, <span id="intern-name">Loading...</span>!</h1>
+                    <p class="welcome-subtitle">Here's your fundraising progress</p>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <span id="profile-initial">U</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Cards -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <h3 id="total-raised">$0</h3>
+                            <p>Total Raised</p>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-content">
+                            <h3 id="goal-progress">0%</h3>
+                            <p>Goal Progress</p>
+                        </div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 id="rank-position">#-</h3>
+                            <p>Your Rank</p>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <h3 id="rewards-earned">0</h3>
+                            <p>Rewards Earned</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Referral Code Section -->
+            <section class="referral-section">
+                <div class="referral-card">
+                    <h3>Your Referral Code</h3>
+                    <div class="referral-code-container">
+                        <code id="referral-code">Loading...</code>
+                        <button id="copy-code" class="btn btn-secondary">Copy</button>
+                    </div>
+                    <p class="referral-info">Share this code with potential donors to track your referrals!</p>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="progress-section">
+                <div class="progress-card">
+                    <h3>Fundraising Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span>$<span id="current-amount">0</span></span>
+                        <span>Goal: $<span id="goal-amount">5000</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rewards Section -->
+            <section class="rewards-section">
+                <h3>Rewards & Unlockables</h3>
+                <div class="rewards-grid">
+                    <div class="reward-card unlocked" data-milestone="100">
+                        <div class="reward-icon">🏅</div>
+                        <h4>First $100</h4>
+                        <p>Bronze Badge</p>
+                        <span class="reward-status">Unlocked</span>
+                    </div>
+                    <div class="reward-card locked" data-milestone="500">
+                        <div class="reward-icon">🥈</div>
+                        <h4>$500 Milestone</h4>
+                        <p>Silver Badge + Certificate</p>
+                        <span class="reward-status">Locked</span>
+                    </div>
+                    <div class="reward-card locked" data-milestone="1000">
+                        <div class="reward-icon">🥇</div>
+                        <h4>$1000 Champion</h4>
+                        <p>Gold Badge + Special Recognition</p>
+                        <span class="reward-status">Locked</span>
+                    </div>
+                    <div class="reward-card locked" data-milestone="2500">
+                        <div class="reward-icon">💎</div>
+                        <h4>$2500 Elite</h4>
+                        <p>Diamond Badge + Mentorship</p>
+                        <span class="reward-status">Locked</span>
+                    </div>
+                    <div class="reward-card locked" data-milestone="5000">
+                        <div class="reward-icon">👑</div>
+                        <h4>$5000 Master</h4>
+                        <p>Crown + Exclusive Event Access</p>
+                        <span class="reward-status">Locked</span>
+                    </div>
+                    <div class="reward-card locked" data-milestone="10000">
+                        <div class="reward-icon">🚀</div>
+                        <h4>$10K Legend</h4>
+                        <p>Legendary Status + Career Boost</p>
+                        <span class="reward-status">Locked</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="actions-section">
+                <div class="actions-card">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="window.open('mailto:?subject=Support Our Cause&body=Help me reach my fundraising goal! Use my referral code: ' + document.getElementById('referral-code').textContent, '_blank')">
+                            📧 Share via Email
+                        </button>
+                        <button class="btn btn-secondary" onclick="copyReferralCode()">
+                            📋 Copy Referral Link
+                        </button>
+                        <a href="leaderboard.html" class="btn btn-outline">
+                            🏆 View Leaderboard
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
